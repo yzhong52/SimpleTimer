@@ -1,4 +1,4 @@
-#include "Timmer.h"
+#include "Timer.h"
 #include <iostream>
 #include <math.h>
 
@@ -8,7 +8,7 @@ using namespace std;
 
 
 float function1( int i ) {
-	return tan( 1.0f * i ); 
+	return tan( 1.0f * i ) * cos( 1.0f * i ) * sin( 1.0f * i );
 }
 
 float function2( int i ) {
@@ -16,7 +16,6 @@ float function2( int i ) {
 }
 
 
-#include <windows.h>
 int main()
 {
 	for( int i=0; i<1000; i++ ) {

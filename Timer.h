@@ -1,5 +1,5 @@
 #ifndef _TIMMER_H
-#define _TIMEER_H
+#define _TIMMER_H
 
 #include <string>
 #include <unordered_map>

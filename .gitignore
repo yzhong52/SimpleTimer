@@ -199,3 +199,20 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
+
+# Ignore Xcode files
+.DS_Store
+build/*
+DerivedData/*
+*.xcodeproj
+*.xccheckout
+*.xcodeproj
+*.xcuserstate
+*.xcscheme
+*.plist
+*.xcactivitylog
+
+Cache.db
+text-index.idx
+Xcode_5_Project.1

@@ -1,4 +1,4 @@
-#include "Timmer.h"
+#include "Timer.h"
 
 #include <sstream> 
 #include <string>
@@ -53,8 +53,46 @@ void Timmer::end( const std::string& function_name ) {
 	}
 }
 
-#endif
+#else
 
+
+#include <sys/time.h>
+
+Timmer::Timmer(){
+}
+
+void Timmer::begin( const std::string& function_name ) {
+	std::unordered_map<std::string, Data>::iterator it = instance().datas.find( function_name );
+	if( it==instance().datas.end() ) {
+		instance().datas.insert( pair<std::string, Data>( function_name, Data()) );
+		it = instance().datas.find( function_name );
+	}
+	
+    // start timer
+    static timeval t;
+    gettimeofday(&t, NULL);
+	it->second.begin_time
+        = 1.0 * t.tv_sec * 1000.0      // sec to ms
+        + 1.0 * t.tv_usec / 1000.0;    // us to ms
+}
+
+void Timmer::end( const std::string& function_name ) {
+	std::unordered_map<std::string, Data>::iterator it = instance().datas.find( function_name );
+	if( it!=instance().datas.end() ) {
+		static timeval t;
+        gettimeofday(&t, NULL);
+		it->second.total_run_time
+            += 1.0 * t.tv_sec * 1000.0      // sec to ms
+            + 1.0 * t.tv_usec / 1000.0 - it->second.begin_time;
+        
+		it->second.count++;
+	} else {
+		std::cerr << "Error: This function '" << function_name << "' is not defined" << std::endl;
+		system( "pause" );
+	}
+}
+
+#endif
 
 
 
@@ -66,10 +104,10 @@ std::string Timmer::summery( void ) {
 	static const string called_times = "Acount"; 
 	static const string avg_time     = "Average"; 
 
-	const int func_name_size    = max(func_name.length(),    22);
-	const int total_time_size   = max(total_time.length(),   15); 
-	const int called_times_size = max(called_times.length(), 12); 
-	const int avg_time_size     = max(avg_time.length(),     15); 
+	const int func_name_size    = max((int)func_name.length(),    22);
+	const int total_time_size   = max((int)total_time.length(),   15);
+	const int called_times_size = max((int)called_times.length(), 12);
+	const int avg_time_size     = max((int)avg_time.length(),     15);
 
 	ss << "+--------------------" << endl;
 	ss << "| Profiling Summery ..." << endl;
