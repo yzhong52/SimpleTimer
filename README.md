@@ -1,7 +1,7 @@
 Timmer
 ======
 
-A generic Timmer class in C/C++. Feasible for profiling. Compatible with both Windows and Mac. 
+A generic Timmer class in C/C++. Feasible for profiling. Compatible with both Windows and Mac. Only the windows part has been implemented for now. 
 
 
 Usage
