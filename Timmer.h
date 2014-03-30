@@ -6,9 +6,9 @@
 
 class Timmer {
 public:
-	static void begin( const std::string& function_name = "Anonymous Fuction" );
+	static void begin( const std::string& function_name = "Anonymous Function" );
 
-	static void end( const std::string& function_name = "Anonymous function" ); 
+	static void end( const std::string& function_name   = "Anonymous Function" ); 
 
 	static std::string summery( void ); 
 
