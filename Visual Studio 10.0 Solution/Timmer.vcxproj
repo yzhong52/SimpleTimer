@@ -75,6 +75,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\example.cpp" />
+    <ClCompile Include="..\Timmer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Timmer.h" />
