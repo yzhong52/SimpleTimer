@@ -2,9 +2,9 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\example.cpp" />
-    <ClCompile Include="..\Timmer.cpp" />
+    <ClCompile Include="..\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Timmer.h" />
+    <ClInclude Include="..\Timer.h" />
   </ItemGroup>
 </Project>

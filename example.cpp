@@ -1,40 +1,45 @@
 #include "Timer.h"
 #include <iostream>
 #include <math.h>
-
+#include <algorithm>
 using namespace std; 
 
-#include <ctime>
+double func_PI( int n ) {
+	Timer::begin( "Compute Pi" ); 
 
+	// computing pi
+	// reference: http://mathworld.wolfram.com/PiFormulas.html
+	double res = 0; 
+	for( int k=1; k<n; k++ ) {
+		res += 4 * pow(-1.0, k+1) / ( 2 * k - 1 ); 
+	}
 
-float function1( int i ) {
-	return tan( 1.0f * i ) * cos( 1.0f * i ) * sin( 1.0f * i );
+	Timer::end( "Compute Pi" ); 
+	return res;
 }
 
-float function2( int i ) {
-	return cos( 1.0f * i ) * sin( 1.0f * i );
+int func_Fibonacci( int n ) {
+	Timer::begin( "Function B" ); 
+	
+	// computing the fibonaci
+	int res = 1; 
+	int tmp = 1; 
+	for( int i=0; i<n; i++ ) {
+		tmp = res + tmp; 
+		std::swap( res, tmp ); 
+	}
+	
+	Timer::end( "Function B" ); 
+	return res;
 }
 
 
 int main()
 {
-	for( int i=0; i<1000; i++ ) {
-		Timmer::begin( "Function A" ); 
-		function1(i);
-		Timmer::end( "Function A" ); 
-
-		Timmer::begin( "Function B" ); 
-		function2(i);
-		Timmer::end( "Function B" ); 
-	}
+	cout << "Pi: " << func_PI( 1000000 ) << endl;
+	cout << "Fibonacci i: " << func_Fibonacci( 1000000 ) << endl;;
 	
-	for( int i=0; i<20; i++ ) {
-		Timmer::begin( "Function B" ); 
-		function2(i);
-		Timmer::end( "Function B" ); 
-	}
-
-	cout << Timmer::summery() << endl; 
+	cout << Timer::summery() << endl; 
 
 	return 0; 
 }
