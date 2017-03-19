@@ -1,4 +1,4 @@
-Timmer
+Timer
 ======
 
 A Timer class in C/C++. Feasible for simple profiling. Compatible with both Windows and Mac. Tested on Window 7 and Mac OS Mavericks. 
