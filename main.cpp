@@ -4,8 +4,9 @@
 #include <algorithm>
 using namespace std;
 
-// computing PI
-// reference: http://mathworld.wolfram.com/PiFormulas.html
+
+// Computing PI
+// Reference: http://mathworld.wolfram.com/PiFormulas.html
 double func_PI( int n ) {
 	Timer::begin( "Compute Pi" ); 
 
@@ -18,26 +19,25 @@ double func_PI( int n ) {
 	return res;
 }
 
-// computing the fibonaci number
+// Computing Fibonaci number
 int func_Fibonacci( int n ) {
-	Timer::begin( "Function B" ); 
-	
+	Timer::begin( "Function Fibonaci" ); 
+
 	int res = 1, tmp = 1;
 	for( int i=0; i<n; i++ ) {
 		tmp = res + tmp; 
-		swap( res, tmp );
+		swap( res, tmp ); 
 	}
-	
-	Timer::end( "Function B" ); 
+
+	Timer::end( "Function Fibonaci" ); 
 	return res;
 }
 
 
-int main()
-{
-    func_PI( 1000000 );
-    func_Fibonacci( 1000000 );
-	
+int main() {
+	func_PI( 1000000 );
+	func_Fibonacci( 1000000 );
+
 	cout << Timer::summery() << endl; 
 
 	return 0; 
